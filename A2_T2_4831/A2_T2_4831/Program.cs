@@ -13,11 +13,18 @@ namespace A2_T2_4831
         void Deposit(double deposit);
         void Withdraw(int withdraw);
     }
+
+    public interface ITransaction {
+
+        abstract void ExcecuteTransaction(double amount);
+        abstract void PrintTransaction();
+    
+    }
     public abstract class BankAccount : IBankAccount
     {
-        public int AccountNumber { get; set; }
-        protected string AccountHolderName { get; set; }
-        protected double Balance { get; set; }
+        private int AccountNumber { get; set; }
+        private string AccountHolderName { get; set; }
+        private double Balance { get; set; }
 
 
         public BankAccount(int account_number, string account_holder_name, double balance)
@@ -27,7 +34,14 @@ namespace A2_T2_4831
             Balance = balance;
 
         }
+        public virtual string GetName() { return AccountHolderName; }
+        public virtual void SetName(string accountnholderame) {AccountHolderName= accountnholderame; }
+        public virtual int GetAccountNumber() { return AccountNumber; }
+        public virtual void SetAccountNumber(int accountno) { AccountNumber = accountno; }
+        public virtual double GetBalance() { return Balance; }
+        public virtual void SetBalance(double balance) { Balance = balance; }
 
+        public virtual void Deposit() { }
         public virtual void Deposit(double deposit)
         {
 
@@ -36,6 +50,8 @@ namespace A2_T2_4831
 
 
         }
+
+        public virtual void Withdraw() { }
 
         public virtual void Withdraw(int withdraw)
         {
@@ -58,28 +74,60 @@ namespace A2_T2_4831
 
         }
 
+        public  virtual void CalculateInterest(double deposit)
+        { }
     }
 
-    public class SavingAccounts : BankAccount
+    public class SavingAccounts : BankAccount, ITransaction
     {
         private double InterestRate;
+        BankAccount bankaccount;
         public SavingAccounts(int account_number, string account_holder_name, double balance, double interest_rate) : base(account_number, account_holder_name, balance)
         {
             InterestRate = interest_rate;
-
         }
+        
         public override void Deposit(double deposit)
         {
             double amount = deposit;
             deposit += deposit * InterestRate;
             base.Deposit(deposit);
-            Console.WriteLine($"Amount Deposited: {amount}. \nAfter Interest Deposited Amount {deposit} Has Been Added in your account. Current Amount: {Balance}");
+            Console.WriteLine($"Amount Deposited: {amount}.\nAfter Interest Deposited Amount {deposit} Has Been Added in your account.");
         }
+
+        public override void Deposit()
+        {
+
+        }
+
+        public override void CalculateInterest(double deposit)
+        {
+            deposit = deposit* InterestRate;
+            Console.WriteLine($"Calculated Interest on Deposit Amount: {deposit}");
+        }
+
+        public void ExcecuteTransaction(double amount) {
+            int i = 0;
+            Console.WriteLine("For Deposit Press '1'. For Withdraw Press '2'. ");
+            i= int.Parse(Console.ReadLine());
+            if (i == 1)
+            {
+                base.Deposit(amount);
+            }
+            
+        
+        }
+
+        public void PrintTransaction() { }
+
+
+
+
 
 
     }
 
-    public class CheckingAccounts : BankAccount
+    public class CheckingAccounts : BankAccount, ITransaction
     {
         public CheckingAccounts(int account_number, string account_holder_name, double balance) : base(account_number, account_holder_name, balance)
         { }
@@ -87,7 +135,38 @@ namespace A2_T2_4831
         {
             base.Withdraw(withdraw);
         }
+        public override void CalculateInterest(double deposit)
+        {
+            Console.WriteLine("No Interest on Checking Account.");
+        }
+
+
+        public void ExcecuteTransaction(double amount) { }
+
+        public void PrintTransaction() { }
+
     }
+
+
+
+    public class LoanAccount: BankAccount, ITransaction
+    {
+        public LoanAccount(int account_number, string account_holder_name, double balance) : base(account_number, account_holder_name, balance)
+        { }
+            public override void CalculateInterest(double loanamount)
+        {   
+            Console.WriteLine($"Interest on Loan Amount {loanamount}");
+        }
+        public void ExcecuteTransaction(double amount) { }
+
+        public void PrintTransaction() { }
+
+
+    }
+
+
+
+
 
     public class Bank
     {
@@ -101,13 +180,13 @@ namespace A2_T2_4831
         public void AddAccount(BankAccount bankaccount)
         {
             BankAccounts.Add(bankaccount);
-            Console.WriteLine($" Account Number {bankaccount.AccountNumber} has been added in the Bank ");
+            Console.WriteLine($" Account Number {bankaccount.GetAccountNumber()} has been added in the Bank ");
         }
         public void DepositToAccount(int accountnumber, double depositamount)
         {
             foreach (var bankaccount in BankAccounts)
             {
-                if (accountnumber == bankaccount.AccountNumber)
+                if (accountnumber == bankaccount.GetAccountNumber())
                 {
                     bankaccount.Deposit(depositamount);
                 }
@@ -119,7 +198,7 @@ namespace A2_T2_4831
         {
             foreach (var bankaccount in BankAccounts)
             {
-                if (accountnumber == bankaccount.AccountNumber)
+                if (accountnumber == bankaccount.GetAccountNumber())
                 {
                     bankaccount.Withdraw(withdraw);
                 }
@@ -148,10 +227,8 @@ namespace A2_T2_4831
             bank.WithdrawnFromAccount(21871, 5500);
 
             SavingAccounts account1 = new SavingAccounts(21851, "John", 5000,0.25);
-            account1.Deposit(2000);
-            account1.Deposit(2000);
-            account1.Deposit(2000);
-            account1.DisplayAccountInfo();
+            account1.CalculateInterest(500);        
         }
+
     }
 }
