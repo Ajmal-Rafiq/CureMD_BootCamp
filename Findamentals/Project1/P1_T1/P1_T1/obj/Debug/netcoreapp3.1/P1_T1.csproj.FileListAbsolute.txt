@@ -1,0 +1,14 @@
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\obj\Debug\netcoreapp3.1\P1_T1.csproj.AssemblyReference.cache
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\obj\Debug\netcoreapp3.1\P1_T1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\obj\Debug\netcoreapp3.1\P1_T1.AssemblyInfoInputs.cache
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\obj\Debug\netcoreapp3.1\P1_T1.AssemblyInfo.cs
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\obj\Debug\netcoreapp3.1\P1_T1.csproj.CoreCompileInputs.cache
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\bin\Debug\netcoreapp3.1\P1_T1.exe
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\bin\Debug\netcoreapp3.1\P1_T1.deps.json
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\bin\Debug\netcoreapp3.1\P1_T1.runtimeconfig.json
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\bin\Debug\netcoreapp3.1\P1_T1.runtimeconfig.dev.json
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\bin\Debug\netcoreapp3.1\P1_T1.dll
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\bin\Debug\netcoreapp3.1\P1_T1.pdb
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\obj\Debug\netcoreapp3.1\P1_T1.dll
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\obj\Debug\netcoreapp3.1\P1_T1.pdb
+C:\Users\4831\Desktop\4831\Project1\P1_T1\P1_T1\obj\Debug\netcoreapp3.1\P1_T1.genruntimeconfig.cache
